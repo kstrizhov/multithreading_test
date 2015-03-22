@@ -1,12 +1,10 @@
 package mthreading;
 
-import java.util.ArrayList;
-
 public class MThreadingMain {
 	
 	static boolean firstThreadStopped = false;
 	static boolean secondThreadStopped = false;
-	static ArrayList<Integer> list = new ArrayList<Integer>();
+	static String string;
 
 	public static void main(String[] args) {
 
@@ -16,7 +14,7 @@ public class MThreadingMain {
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < 1000; i++)
-					list.add(i);
+					string = string + "a";
 				firstThreadStopped = true;
 			}
 		});
@@ -27,7 +25,7 @@ public class MThreadingMain {
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < 1000; i++)
-					list.add(100 * i);
+					string = string + "b";
 				secondThreadStopped = true;
 			}
 		});
@@ -42,6 +40,6 @@ public class MThreadingMain {
 		firstThread.interrupt();
 		secondThread.interrupt();
 		
-		System.out.println(list.size());
+		System.out.println(string.length());
 	}
 }
